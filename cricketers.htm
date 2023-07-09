@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Indian Cricketers Dashboard</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        #dashboard {
+            background-color: #fff;
+            padding: 20px;
+            width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        #search {
+            margin-bottom: 20px;
+            padding: 5px;
+            width: 100%;
+        }
+
+        #search-button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            font-family: Arial, sans-serif;
+            text-align: left;
+        }
+
+        #result div {
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div id="dashboard">
+        <h1>Indian Cricketers Dashboard</h1>
+
+        <input type="text" id="search" placeholder="Search cricketer...">
+        <button id="search-button">Search</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // Sample data for Indian cricketers and their Instagram links
+        var cricketers = [
+            { name: "Virat Kohli", instagram: "https://www.instagram.com/virat.kohli/" },
+            { name: "Rohit Sharma", instagram: "https://www.instagram.com/rohitsharma45/" },
+            { name: "Jasprit Bumrah", instagram: "https://www.instagram.com/jaspritb1/" },
+
+            { name: "Shikhar Dhawan", instagram: "https://www.instagram.com/shikhardofficial/" },
+            { name: "Hardik Pandya", instagram: "https://www.instagram.com/hardikpandya93/" },
+            { name: "Ravindra Jadeja", instagram: "https://www.instagram.com/ravindra.jadeja/" },
+            { name: "Ajinkya Rahane", instagram: "https://www.instagram.com/ajinkyarahane/" },
+            { name: "Cheteshwar Pujara", instagram: "https://www.instagram.com/pujara.cheteshwar/" },
+            { name: "Ravichandran Ashwin", instagram: "https://www.instagram.com/rashwin99/" },
+            { name: "Ishant Sharma", instagram: "https://www.instagram.com/ishant.sharma29/" },
+           { name: "Yuzvendra Chahal", instagram: "https://www.instagram.com/yuzi_chahal23/" },
+           
+            { name: "Kuldeep Yadav", instagram: "https://www.instagram.com/kuldeep_18/" },
+            { name: "Mayank Agarwal", instagram: "https://www.instagram.com/mayankagarawal/" },
+            { name: "Shubman Gill", instagram: "https://www.instagram.com/shubmangill/" },
+            { name: "Washington Sundar", instagram: "https://www.instagram.com/washisundar555/" },
+            { name: "Shardul Thakur", instagram: "https://www.instagram.com/shardul_thakur/" },
+            { name: "Prithvi Shaw", instagram: "https://www.instagram.com/prithvishaw/" },
+            { name: "MS Dhoni", instagram: "https://www.instagram.com/mahi7781/" },
+            { name: "Sachin Tendulkar", instagram: "https://www.instagram.com/sachintendulkar/" },
+            { name: "Ravi Shastri", instagram: "https://www.instagram.com/ravishastriofficial/" },
+            // Add more cricketers here
+        ];
+
+        // Function to search and display cricketer details
+        function searchCricketer() {
+            var searchQuery = document.getElementById("search").value.toLowerCase();
+            var resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = "";
+
+            for (var i = 0; i < cricketers.length; i++) {
+                var cricketer = cricketers[i];
+                var cricketerName = cricketer.name.toLowerCase();
+
+                if (cricketerName.includes(searchQuery)) {
+                    var cricketerDiv = document.createElement("div");
+                    cricketerDiv.innerHTML = "<h3>" + cricketer.name + "</h3><p>Instagram: <a href='" + cricketer.instagram + "' target='_blank'>" + cricketer.instagram + "</a></p>";
+                    resultDiv.appendChild(cricketerDiv);
+                }
+            }
+        }
+
+        // Event listener for search button
+        document.getElementById("search-button").addEventListener("click", searchCricketer);
+
+        // Event listener for search input
+        document.getElementById("search").addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("search-button").click();
+            }
+        });
+    </script>
+</body>
+</html>
